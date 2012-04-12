@@ -1,0 +1,44 @@
+#ifndef SCENE_HPP
+#define SCENE_HPP
+
+#include <SDL/SDL.h>
+
+#include <GL/glew.h>
+
+#include <vector>
+
+#include "ekryyn/Node.hpp"
+#include "../assimp/include/assimp.hpp"
+#include "../assimp/include/aiMesh.h"
+#include "../assimp/include/aiScene.h"
+
+#include "Camera.hpp"
+#include "EventManager.hpp"
+
+class Scene
+{
+public:
+	Scene();
+	void drawAxis(unsigned int scale = 1);
+
+	void addChild(Node *node){ nodes.push_back(node); }
+
+	void render();
+
+	void setCamera(Camera *c);
+
+	void populate();
+
+	void renderMesh(aiMesh *mesh, aiMatrix4x4 transformation);
+
+private:
+	std::vector<Node*> nodes;
+
+	const aiScene* ai_scene;
+//	Assimp::Importer importer;
+
+	Camera *camera;
+
+};
+
+#endif // SCENE_HPP
