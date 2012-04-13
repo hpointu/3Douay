@@ -1,5 +1,5 @@
 #include "Texture.hpp"
-#include "../SGLUtils.hpp"
+#include "SGLUtils.hpp"
 
 Texture::Texture(std::string filename):
 	filename(filename)
