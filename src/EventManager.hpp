@@ -2,7 +2,6 @@
 #define EVENTMANAGER_H
 
 #include <vector>
-#include <SDL/SDL.h>
 #include "Singleton.cpp"
 #include "EventListener.hpp"
 
@@ -11,13 +10,13 @@ class EventManager : public Singleton<EventManager>
 	friend class Singleton<EventManager>;
 
 public:
-	void captureEvent();
+	void captureEvent(sf::Window *source);
 	void subscribe(EventListener *subscriber);
 
 private:
 	EventManager();
 
-	void forward(const SDL_Event &event);
+	void forward(const sf::Event &event);
 
 	std::vector<EventListener*> *listeners;
 

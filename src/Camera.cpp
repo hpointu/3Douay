@@ -2,7 +2,7 @@
 #include "KeyRegister.hpp"
 
 #include <cmath>
-#include <stdio.h>
+#include <iostream>
 
 Camera::Camera(double fovy, double aspect):
 	near(1),
@@ -14,6 +14,7 @@ Camera::Camera(double fovy, double aspect):
 	position.x = 20;
 	position.y = 20;
 	position.z = 20;
+	lastMousePos = sf::Vector2f(0,0);
 
 
 //	SDL_WM_GrabInput(SDL_GRAB_ON);
@@ -59,13 +60,16 @@ void Camera::setFovy(double f)
 	gluPerspective(f, aspect, near, far);
 }
 
-void Camera::onEvent(const SDL_Event &event)
+void Camera::onEvent(const sf::Event &event)
 {
-	if(event.type == SDL_MOUSEMOTION)
+	if(event.Type == sf::Event::MouseMoved)
 	{
-		theta -= event.motion.xrel*0.2;
-		phi -= event.motion.yrel*0.2;
+		theta += (lastMousePos.x-event.MouseMove.X)*0.3;
+		phi += (lastMousePos.y-event.MouseMove.Y)*0.3;
+		lastMousePos.x = event.MouseMove.X;
+		lastMousePos.y = event.MouseMove.Y;
 		updateVectors();
+//		std::cout << phi << ":" << theta << std::endl;
 	}
 }
 

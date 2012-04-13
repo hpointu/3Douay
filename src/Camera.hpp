@@ -6,6 +6,7 @@
 #include "Vector3d.hpp"
 #include "EventListener.hpp"
 #include "ekryyn/Entity.hpp"
+#include <SFML/Graphics.hpp>
 
 class Camera : public Entity, public EventListener
 {
@@ -14,7 +15,7 @@ public:
 
 	void setFovy(double f);
 
-	void onEvent(const SDL_Event &event);
+	void onEvent(const sf::Event &event);
 
 	void render(aiMatrix4x4 trans);
 
@@ -40,6 +41,8 @@ private:
 
 	// angles
 	double theta, phi;
+
+	sf::Vector2f lastMousePos;
 };
 
 #endif // CAMERA_HPP

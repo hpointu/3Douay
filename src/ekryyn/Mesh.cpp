@@ -1,5 +1,8 @@
 #include "Mesh.hpp"
 #include <stdlib.h>
+#include <iostream>
+#include <string>
+
 #include "../ResourceManager.hpp"
 Mesh::Mesh(aiMesh *mesh, aiMaterial *material):
 	_mesh(mesh),
@@ -26,6 +29,7 @@ void Mesh::render(aiMatrix4x4 trans)
 			aiString textureName;
 			_material->Get(AI_MATKEY_TEXTURE(aiTextureType_DIFFUSE, 0), textureName);
 			Texture *_tex = ResourceManager::getInstance()->getTexture(textureName.data);
+
 			if(_tex)
 				glBindTexture(GL_TEXTURE_2D, _tex->get());
 

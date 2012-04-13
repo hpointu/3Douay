@@ -7,7 +7,7 @@
 #include "ResourceManager.hpp"
 
 Application::Application():
-	w(1024), h(1024),
+	w(1280), h(1024),
 	_time(0),
 	lastTime(0)
 {
@@ -23,7 +23,7 @@ Application::Application():
 	settings.DepthBits         = 24; // Demande un Z-buffer 24 bits
 	settings.StencilBits       = 8;  // Demande un stencil-buffer 8 bits
 	settings.AntialiasingLevel = 2;  // Demande 2 niveaux d'anti-crnelage
-	window = new sf::Window(sf::VideoMode(800, 600, 32), "SFML OpenGL", sf::Style::Close, settings);
+	window = new sf::Window(sf::VideoMode(w, h, 32), "SFML OpenGL", sf::Style::Close, settings);
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
@@ -66,12 +66,12 @@ void Application::run()
 	sf::Clock clock;
 
 	scene->setCamera(new Camera(70,(double)w/h));
-	scene->populate();
 
 	// time
 	running = true;
 	ResourceManager *resMgr = ResourceManager::getInstance();
 	resMgr->loadAllResources();
+	scene->populate();
 
 	clock.Reset();
 	while (running)
@@ -85,7 +85,7 @@ void Application::run()
 //		{
 //			SDL_Delay(10-_etime);
 //		}
-		EventManager::getInstance()->captureEvent();
+		EventManager::getInstance()->captureEvent(window);
 
 		window->Display();
 	}

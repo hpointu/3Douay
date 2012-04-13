@@ -13,7 +13,7 @@
 class Application : public EventListener
 {
 public:
-    Application();
+	Application();
 
 	void run();
 

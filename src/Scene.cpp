@@ -55,8 +55,8 @@ void Scene::render()
 //		sceneResources[i]->getRootNode()->render();
 
 	// nodes
-	//	for(unsigned int i=0; i<nodes.size(); i++)
-	//		nodes[i]->render();
+		for(unsigned int i=0; i<nodes.size(); i++)
+			nodes[i]->render();
 	drawAxis();
 
 	glFlush();
@@ -67,5 +67,5 @@ void Scene::render()
 
 void Scene::populate()
 {
-
+	nodes.push_back( ResourceManager::getInstance()->getObject("Tower1")->getRootNode() );
 }

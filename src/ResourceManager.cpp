@@ -5,37 +5,37 @@ ResourceManager::ResourceManager()
 	importer = new Assimp::Importer();
 
 
-	Texture *tex1, *tex2;
+//	Texture *tex1, *tex2;
 
-	tex1 = new Texture("res/tex1.png");
-	registerTexture(tex1, "//tex1.png");
+//	tex1 = new Texture("res/tex1.png");
+//	registerTexture(tex1, "//tex1.png");
 
-	tex2 = new Texture("res/wood.jpg");
-	registerTexture(tex2, "wood");
+//	tex2 = new Texture("res/wood.jpg");
+//	registerTexture(tex2, "wood");
 
-	SceneResource *mesh1 = new SceneResource("res/Cube.blend");
-	registerObject(mesh1, "mesh1");
+//	SceneResource *mesh1 = new SceneResource("res/Cube.blend");
+//	registerObject(mesh1, "mesh1");
 
-	Texture *stone = new Texture("res/stone.jpg");
-	registerTexture(stone, "//stone.jpg");
+//	Texture *stone = new Texture("res/stone.jpg");
+//	registerTexture(stone, "//stone.jpg");
 
-	Texture *sand = new Texture("res/sand.jpg");
-	registerTexture(sand, "//sand.jpg");
+//	Texture *sand = new Texture("res/sand.jpg");
+//	registerTexture(sand, "//sand.jpg");
 
-	Texture *trunk = new Texture("res/trunk.jpg");
-	registerTexture(trunk, "//trunk.jpg");
+	Texture *bricks = new Texture("3D/tower.png");
+	registerTexture(bricks, "//tower.png");
 
-	Texture *leaf = new Texture("res/leaf.jpg");
-	registerTexture(leaf, "//leaf.jpg");
+//	Texture *leaf = new Texture("res/leaf.jpg");
+//	registerTexture(leaf, "//leaf.jpg");
 
-	Texture *reflection = new Texture("res/reflection.jpg");
-	registerTexture(reflection, "//reflection.jpg");
+//	Texture *reflection = new Texture("res/reflection.jpg");
+//	registerTexture(reflection, "//reflection.jpg");
 
-	SceneResource *palmier = new SceneResource("res/Palmier.blend");
-	registerObject(palmier, "palmier");
+//	SceneResource *palmier = new SceneResource("res/Palmier.blend");
+//	registerObject(palmier, "palmier");
 
-	SceneResource *mesh = new SceneResource("res/Cube.blend");
-	registerObject(mesh, "mesh");
+	SceneResource *mesh = new SceneResource("3D/tower.blend");
+	registerObject(mesh, "Tower1");
 }
 
 void ResourceManager::loadAllResources()

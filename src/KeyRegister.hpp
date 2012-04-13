@@ -20,15 +20,15 @@ public:
 		SNEAK
 	};
 
-	void onEvent(const SDL_Event &event);
+	void onEvent(const sf::Event &event);
 
 	bool isKeyActive(PlayerCommand command);
-	bool isKeyActive(SDLKey k);
+	bool isKeyActive(sf::Key::Code k);
 
 private:
 	KeyRegister();
-	std::map<PlayerCommand, SDLKey> keyConf;
-	std::map<SDLKey, bool> activeKeys;
+	std::map<PlayerCommand, sf::Key::Code> keyConf;
+	std::map<sf::Key::Code, bool> activeKeys;
 };
 
 #endif // KEYREGISTER_HPP

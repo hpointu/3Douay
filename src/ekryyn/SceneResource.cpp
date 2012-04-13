@@ -1,5 +1,8 @@
 #include "SceneResource.hpp"
 #include "../ResourceManager.hpp"
+
+#include <iostream>
+
 SceneResource::SceneResource(std::string filename):
 	filename(filename),
 	rootNode(NULL)
@@ -44,6 +47,7 @@ void SceneResource::load()
 		}
 	}
 
+	std::cout << "Loaded: " << filename << std::endl;
 }
 
 Node* SceneResource::getRootNode()

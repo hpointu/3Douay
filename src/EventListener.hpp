@@ -1,12 +1,12 @@
 #ifndef EVENTLISTENER_H
 #define EVENTLISTENER_H
 
-#include <SDL/SDL.h>
+#include <SFML/Graphics.hpp>
 
 class EventListener
 {
 public:
-	virtual void onEvent(const SDL_Event &event) = 0;
+	virtual void onEvent(const sf::Event &event) = 0;
 };
 
 #endif // EVENTLISTENER_H

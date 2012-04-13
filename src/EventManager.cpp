@@ -1,14 +1,15 @@
 #include "EventManager.hpp"
+#include <SFML/Graphics.hpp>
 
 EventManager::EventManager()
 {
 	listeners = new std::vector<EventListener*>();
 }
 
-void EventManager::captureEvent()
+void EventManager::captureEvent(sf::Window *source)
 {
-	SDL_Event event;
-	while(SDL_PollEvent(&event))
+	sf::Event event;
+	while(source->GetEvent(event))
 		forward(event);
 }
 
@@ -17,7 +18,7 @@ void EventManager::subscribe(EventListener *subscriber)
 	listeners->push_back(subscriber);
 }
 
-void EventManager::forward(const SDL_Event &event)
+void EventManager::forward(const sf::Event &event)
 {
 	std::vector<EventListener*>::iterator it;
 	for(it = listeners->begin();
