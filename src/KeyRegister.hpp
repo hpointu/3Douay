@@ -2,7 +2,7 @@
 #define KEYREGISTER_HPP
 
 #include <map>
-#include "Singleton.cpp"
+#include "Singleton.hpp"
 #include "EventListener.hpp"
 
 class KeyRegister : public Singleton<KeyRegister>, public EventListener

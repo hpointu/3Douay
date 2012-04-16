@@ -10,10 +10,14 @@
 #include "EventListener.hpp"
 #include <map>
 
-class Application : public EventListener
+#include "Singleton.hpp"
+
+class Application : public EventListener, public Singleton<Application>
 {
+	friend class Singleton<Application>;
 public:
-	Application();
+
+	float frameTime();
 
 	void run();
 
@@ -21,6 +25,7 @@ public:
 
 
 private:
+	Application();
 	int w, h;
 	float _time;
 	float lastTime;

@@ -15,6 +15,8 @@
 #include "Camera.hpp"
 #include "EventManager.hpp"
 
+#include "ekryyn/Plane.hpp"
+
 class Scene
 {
 public:
@@ -38,6 +40,8 @@ private:
 //	Assimp::Importer importer;
 
 	Camera *camera;
+
+	Node *planeNode;
 
 };
 

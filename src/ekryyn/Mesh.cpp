@@ -4,12 +4,19 @@
 #include <string>
 
 #include "../ResourceManager.hpp"
+
+Mesh::Mesh()
+{
+}
+
 Mesh::Mesh(aiMesh *mesh, aiMaterial *material):
 	_mesh(mesh),
 	_material(material)
 {
 
 }
+
+
 
 void Mesh::render(aiMatrix4x4 trans)
 {

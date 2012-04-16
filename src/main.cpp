@@ -2,8 +2,8 @@
 
 int main(void)
 {
-	Application app;
-	app.run();
+	Application *app = Application::getInstance();
+	app->run();
 
 	return 0;
 }

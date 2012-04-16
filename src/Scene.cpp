@@ -6,11 +6,21 @@
 
 Scene::Scene()
 {
+	planeNode = new Node();
+
+
+	Texture *t = new Texture("textures/sample.png");
+	t->load();
+
+	Plane *p = new Plane();
+	p->setTexture(t);
+	planeNode->setEntity(p);
+
 }
 
 void Scene::drawAxis(unsigned int scale)
 {
-	//	glDisable(GL_LIGHTING);
+	glDisable(GL_LIGHTING);
 	glPushMatrix();
 	glScalef(scale,scale,scale);
 	glBegin(GL_LINES);
@@ -26,7 +36,7 @@ void Scene::drawAxis(unsigned int scale)
 	glColor3ub(255,255,255);
 	glEnd();
 	glPopMatrix();
-	//	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHTING);
 }
 void Scene::setCamera(Camera *c)
 {
@@ -47,20 +57,22 @@ void Scene::render()
 
 
 	// wireframe
-//	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 
 	// scenes resources
-//	for(unsigned int i=0; i<sceneResources.size(); i++)
-//		sceneResources[i]->getRootNode()->render();
+	//	for(unsigned int i=0; i<sceneResources.size(); i++)
+	//		sceneResources[i]->getRootNode()->render();
 
 	// nodes
-		for(unsigned int i=0; i<nodes.size(); i++)
-			nodes[i]->render();
+	//	for(unsigned int i=0; i<nodes.size(); i++)
+	//		nodes[i]->render();
+
+	planeNode->render();
 	drawAxis();
 
 	glFlush();
-//	SDL_GL_SwapBuffers();
+	//	SDL_GL_SwapBuffers();
 }
 
 

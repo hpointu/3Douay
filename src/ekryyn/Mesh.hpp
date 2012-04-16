@@ -15,9 +15,10 @@
 class Mesh : public Entity
 {
 public:
+	Mesh();
 	Mesh(aiMesh *mesh, aiMaterial* material);
 
-	void render(aiMatrix4x4 trans);
+	virtual void render(aiMatrix4x4 trans);
 
 	Texture *tex;
 

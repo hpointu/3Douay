@@ -25,6 +25,9 @@ Application::Application():
 	settings.AntialiasingLevel = 2;  // Demande 2 niveaux d'anti-crnelage
 	window = new sf::Window(sf::VideoMode(w, h, 32), "SFML OpenGL", sf::Style::Close, settings);
 
+//	window->SetFramerateLimit(120);
+	window->UseVerticalSync(true);
+
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
 	//	glEnable (GL_BLEND);
@@ -73,18 +76,13 @@ void Application::run()
 	resMgr->loadAllResources();
 	scene->populate();
 
-	clock.Reset();
+//	clock.Reset();
 	while (running)
 	{
-		lastTime = _time;
-		_time = clock.GetElapsedTime();
-
 		scene->render();
-//		int _etime = SDL_GetTicks() - _time;
-//		if(_etime < 10)
-//		{
-//			SDL_Delay(10-_etime);
-//		}
+
+		std::cout << "FPS: " << (1.f/window->GetFrameTime()) << std::endl;
+
 		EventManager::getInstance()->captureEvent(window);
 
 		window->Display();
@@ -94,6 +92,11 @@ void Application::run()
 void Application::moveCamera(int timestep)
 {
 
+}
+
+float Application::frameTime()
+{
+	return window->GetFrameTime();
 }
 
 void Application::onEvent(const sf::Event &event)

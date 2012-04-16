@@ -41,3 +41,4 @@ target_link_libraries(3Douay ${mainLibs} assimp)
 
 configure_file(res/3D/tower.blend 3D/tower.blend COPYONLY)
 configure_file(res/3D/tower.png 3D/tower.png COPYONLY)
+configure_file(res/textures/sample.png textures/sample.png COPYONLY)

@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-#include "Singleton.cpp"
+#include "Singleton.hpp"
 #include "ekryyn/Texture.hpp"
 #include "ekryyn/SceneResource.hpp"
 #include "../assimp/include/assimp.hpp"

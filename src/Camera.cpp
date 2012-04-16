@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <iostream>
+#include "Application.hpp"
 
 Camera::Camera(double fovy, double aspect):
 	near(1),
@@ -64,8 +65,8 @@ void Camera::onEvent(const sf::Event &event)
 {
 	if(event.Type == sf::Event::MouseMoved)
 	{
-		theta += (lastMousePos.x-event.MouseMove.X)*0.3;
-		phi += (lastMousePos.y-event.MouseMove.Y)*0.3;
+		theta += (lastMousePos.x-event.MouseMove.X)* Application::getInstance()->frameTime()*10;
+		phi += (lastMousePos.y-event.MouseMove.Y)* Application::getInstance()->frameTime()*10;
 		lastMousePos.x = event.MouseMove.X;
 		lastMousePos.y = event.MouseMove.Y;
 		updateVectors();
