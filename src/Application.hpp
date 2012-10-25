@@ -22,7 +22,10 @@ public:
 	void run();
 
 	virtual void onEvent(const sf::Event &event);
+	void resetMouse();
 
+	inline int getWidth(){ return w; }
+	inline int getHeight(){ return h; }
 
 private:
 	Application();

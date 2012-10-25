@@ -19,6 +19,8 @@ public:
 
 	void render(aiMatrix4x4 trans);
 
+	void grabMouse(bool val);
+
 private:
 
 	double fovy;
@@ -41,6 +43,8 @@ private:
 
 	// angles
 	double theta, phi;
+
+	bool grabbedMouse;
 
 	sf::Vector2f lastMousePos;
 };

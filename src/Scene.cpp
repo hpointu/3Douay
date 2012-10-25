@@ -65,10 +65,10 @@ void Scene::render()
 	//		sceneResources[i]->getRootNode()->render();
 
 	// nodes
-	//	for(unsigned int i=0; i<nodes.size(); i++)
-	//		nodes[i]->render();
+		for(unsigned int i=0; i<nodes.size(); i++)
+			nodes[i]->render();
 
-	planeNode->render();
+//	planeNode->render();
 	drawAxis();
 
 	glFlush();

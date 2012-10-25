@@ -28,6 +28,7 @@ public:
 	void render();
 
 	void setCamera(Camera *c);
+	inline Camera* getCamera(){ return camera; }
 
 	void populate();
 

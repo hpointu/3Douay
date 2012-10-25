@@ -7,7 +7,7 @@
 #include "ResourceManager.hpp"
 
 Application::Application():
-	w(1280), h(1024),
+	w(800), h(600),
 	_time(0),
 	lastTime(0)
 {
@@ -20,13 +20,13 @@ Application::Application():
 //	SDL_WM_SetCaption("Wouahoo", NULL);
 //	SDL_SetVideoMode(w, h, 32, SDL_OPENGL);
 	sf::WindowSettings settings;
-	settings.DepthBits         = 24; // Demande un Z-buffer 24 bits
+	settings.DepthBits         = 16; // Demande un Z-buffer 24 bits
 	settings.StencilBits       = 8;  // Demande un stencil-buffer 8 bits
 	settings.AntialiasingLevel = 2;  // Demande 2 niveaux d'anti-crnelage
-	window = new sf::Window(sf::VideoMode(w, h, 32), "SFML OpenGL", sf::Style::Close, settings);
+	window = new sf::Window(sf::VideoMode(w, h, 16), "SFML OpenGL", sf::Style::Close, settings);
 
 //	window->SetFramerateLimit(120);
-	window->UseVerticalSync(true);
+//	window->UseVerticalSync(true);
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
@@ -66,27 +66,51 @@ Application::Application():
 void Application::run()
 {
 
-	sf::Clock clock;
+	sf::Clock frameClock, globalClock;
 
 	scene->setCamera(new Camera(70,(double)w/h));
 
-	// time
 	running = true;
 	ResourceManager *resMgr = ResourceManager::getInstance();
 	resMgr->loadAllResources();
 	scene->populate();
 
-//	clock.Reset();
+	frameClock.Reset();
+	globalClock.Reset();
+
+	float fps = 1/60.f;
+	int frameCount = 0;
+
+	window->ShowMouseCursor(true);
+
 	while (running)
 	{
-		scene->render();
-
-		std::cout << "FPS: " << (1.f/window->GetFrameTime()) << std::endl;
-
 		EventManager::getInstance()->captureEvent(window);
 
-		window->Display();
+		float elapsedTime	= frameClock.GetElapsedTime();
+		if(elapsedTime >= fps)
+		{
+
+			scene->render();
+
+			window->Display();
+			frameClock.Reset();
+			frameCount++;
+		}
+
+		if(globalClock.GetElapsedTime() >= 1.f)
+		{
+			std::cout << "FPS: " << frameCount << std::endl;
+			globalClock.Reset();
+			frameCount = 0;
+		}
 	}
+}
+
+
+void Application::resetMouse()
+{
+	window->SetCursorPosition(w/2, h/2);
 }
 
 void Application::moveCamera(int timestep)
@@ -107,8 +131,20 @@ void Application::onEvent(const sf::Event &event)
 		running = false;
 		break;
 
-		default:
-			break;
+	case sf::Event::MouseButtonReleased:
+		scene->getCamera()->grabMouse(true);
+		window->ShowMouseCursor(false);
+		break;
+
+	case sf::Event::KeyReleased:
+		if( event.Key.Code == sf::Key::Escape) {
+			scene->getCamera()->grabMouse(false);
+			window->ShowMouseCursor(true);
+		}
+		break;
+
+	default:
+		break;
 
 	}
 }

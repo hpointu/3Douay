@@ -17,9 +17,18 @@ Camera::Camera(double fovy, double aspect):
 	position.z = 20;
 	lastMousePos = sf::Vector2f(0,0);
 
+	theta = phi = 0;
+
+	grabbedMouse = false;
+
 
 //	SDL_WM_GrabInput(SDL_GRAB_ON);
 //	SDL_ShowCursor(SDL_DISABLE);
+}
+
+void Camera::grabMouse(bool val)
+{
+	grabbedMouse = val;
 }
 
 void Camera::updateVectors()
@@ -63,14 +72,21 @@ void Camera::setFovy(double f)
 
 void Camera::onEvent(const sf::Event &event)
 {
-	if(event.Type == sf::Event::MouseMoved)
+	if( grabbedMouse && event.Type == sf::Event::MouseMoved )
 	{
-		theta += (lastMousePos.x-event.MouseMove.X)* Application::getInstance()->frameTime()*10;
-		phi += (lastMousePos.y-event.MouseMove.Y)* Application::getInstance()->frameTime()*10;
+		float ft = Application::getInstance()->frameTime();
+		theta += (lastMousePos.x-event.MouseMove.X)* ft *10;
+		phi += (lastMousePos.y-event.MouseMove.Y)* ft *10;
+
 		lastMousePos.x = event.MouseMove.X;
 		lastMousePos.y = event.MouseMove.Y;
 		updateVectors();
-//		std::cout << phi << ":" << theta << std::endl;
+
+		// replace mouse to the center of the screen
+		Application::getInstance()->resetMouse();
+		lastMousePos.x = Application::getInstance()->getWidth()/2;
+		lastMousePos.y = Application::getInstance()->getHeight()/2;
+
 	}
 }
 
