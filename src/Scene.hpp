@@ -8,9 +8,8 @@
 #include <vector>
 
 #include "ekryyn/Node.hpp"
-#include "../assimp/include/assimp.hpp"
-#include "../assimp/include/aiMesh.h"
-#include "../assimp/include/aiScene.h"
+#include <assimp/mesh.h>
+#include <assimp/scene.h>
 
 #include "Camera.hpp"
 #include "EventManager.hpp"

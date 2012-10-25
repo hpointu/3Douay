@@ -1,7 +1,9 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
-#include "../../assimp/include/aiVector3D.h"
-#include "../../assimp/include/aiMatrix4x4.h"
+
+#include <assimp/vector3.h>
+#include <assimp/matrix4x4.h>
+
 class Entity
 {
 public:

@@ -8,9 +8,9 @@
 #include "Texture.hpp"
 #include "Entity.hpp"
 
-#include "../../assimp/include/assimp.hpp"
-#include "../../assimp/include/aiScene.h"
-#include "../../assimp/include/aiPostProcess.h"
+#include <assimp/mesh.h>
+#include <assimp/material.h>
+#include <assimp/matrix4x4.h>
 
 class Mesh : public Entity
 {

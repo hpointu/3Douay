@@ -1,5 +1,4 @@
 #include "Plane.hpp"
-#include "../../assimp/include/assimp.hpp"
 
 Plane::Plane() :
 	texture(NULL)

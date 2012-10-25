@@ -2,7 +2,7 @@
 #define NODE_HPP
 
 #include "Entity.hpp"
-#include "../../assimp/include/aiMatrix4x4.h"
+#include <assimp/matrix4x4.h>
 #include <vector>
 
 class Node

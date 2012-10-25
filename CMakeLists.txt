@@ -21,12 +21,9 @@ include_directories(${SDL_IMAGE_INCLUDE_DIRS})
 
 set(mainLibs ${SFML_LIBRARIES} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES} ${SDL_LIBRARIES} ${SDL_IMAGE_LIBRARIES})
 
-
-
-INCLUDE_DIRECTORIES( assimp/code/BoostWorkaround )
-ADD_DEFINITIONS( -DASSIMP_BUILD_BOOST_WORKAROUND )
-MESSAGE( STATUS "Building a non-boost version of Assimp." )
-add_subdirectory( assimp/code )
+MESSAGE( STATUS "CMake ASSIMP" )
+add_subdirectory( assimp-3.0 )
+include_directories("assimp-3.0/include")
 
 
 file(

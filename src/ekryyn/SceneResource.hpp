@@ -5,9 +5,10 @@
 #include <string>
 #include <vector>
 
-#include "../../assimp/include/assimp.hpp"
-#include "../../assimp/include/aiScene.h"
-#include "../../assimp/include/aiPostProcess.h"
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <assimp/Importer.hpp>
+
 
 #include "Node.hpp"
 #include "Mesh.hpp"

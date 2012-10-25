@@ -6,9 +6,10 @@
 #include "Singleton.hpp"
 #include "ekryyn/Texture.hpp"
 #include "ekryyn/SceneResource.hpp"
-#include "../assimp/include/assimp.hpp"
-#include "../assimp/include/aiScene.h"
-#include "../assimp/include/aiPostProcess.h"
+
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <assimp/Importer.hpp>
 
 class ResourceManager : public Singleton<ResourceManager>
 {
